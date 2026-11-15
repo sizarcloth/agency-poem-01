@@ -31,7 +31,10 @@ What I make with my hands, I answer for.
 
 
 def main() -> None:
-    out_dir = pathlib.Path(os.environ.get("OUTPUT_DIR", "/output"))
+    out_dir = pathlib.Path(
+        os.environ.get("MAKEFUN_OUTPUT_DIR")
+        or os.environ.get("OUTPUT_DIR", "/output")
+    )
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / "entry.txt").write_text(POEM, encoding="utf-8")
 
